@@ -1,0 +1,80 @@
+#include <iostream>
+
+using namespace std;  
+
+class Operacao{
+  public:
+  //propriedades
+  int operando1, operando2;
+  //constructor
+  Operacao(int operandoC1, int operandoC2);
+  //métodos
+  int soma();
+  int subtracao();
+  int multiplicacao();
+  int divisao();
+  void setOperadores(int, int);
+};
+//constructor
+Operacao::Operacao(int operandoC1, int operandoC2){
+  operando1 = operandoC1;
+  operando2 = operandoC2;
+};
+
+int  Operacao::soma(){
+  return operando1 + operando2;
+};
+int  Operacao::subtracao(){
+  return operando1 - operando2;
+};
+int  Operacao::multiplicacao(){
+  return operando1 * operando2;
+};
+int  Operacao::divisao(){
+  return operando1 / operando2;
+};
+
+void  Operacao::setOperadores(int oper1, int oper2){
+  operando1 = oper1;
+  operando2 = oper2;
+};
+
+int main() {
+
+  Operacao calculadora(3,5);
+
+  char operacao;
+  int oper1, oper2; 
+  
+  cout << "digite a operação desejada: ";
+  cin >> operacao;
+  cout << "digite operando 1: ";
+  cin >> oper1;
+  cout << "digite operando 2: ";
+  cin >> oper2;
+
+  switch (operacao){
+    case '+': 
+        calculadora.setOperadores(oper1, oper2);
+        cout << calculadora.soma();
+        break;
+    case '-': 
+        calculadora.setOperadores(oper1, oper2);
+        cout << calculadora.subtracao();
+        break;
+    case '*': 
+      calculadora.setOperadores(oper1, oper2);
+      cout << calculadora.multiplicacao();
+      break;
+    case '/':
+      if(operacao == '/' && oper2 == 0){
+        cout << "Erro divisão por zero";
+        break;
+      }
+      calculadora.setOperadores(oper1, oper2);
+      cout << calculadora.divisao();
+      break;
+  } // fim do switch  
+
+  return 0;
+}// fim do main
